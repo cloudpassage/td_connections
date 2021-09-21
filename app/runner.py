@@ -10,6 +10,8 @@ from tdconnections import json_to_csv
 def main():
     utility.Utility.log_stdout("TD Connections Script Started ...")
     config = config_helper.ConfigHelper()
+    json_to_csv_obj = json_to_csv.JSONToCSV()
+
     utility.Utility.log_stdout("1- Creating HALO API CALLER Object.")
     halo_api_caller_obj = halo_api_caller.HaloAPICaller(config)
 
@@ -27,9 +29,10 @@ def main():
     td_connections_lst = halo_api_caller_obj.get_group_listening_ports(config.target_group_id)
     #td_connections_lst = halo_api_caller_obj.get_group_inbound_connections(config.target_group_id)
     #td_connections_lst = halo_api_caller_obj.get_group_outbound_connections(config.target_group_id)
-    json_to_csv_obj = json_to_csv.JSONToCSV()
+
+    utility.Utility.log_stdout(
+        "4- exporting retrieved td connections list into CSV format")
     json_to_csv_obj.convert_json_to_csv(td_connections_lst)
-    #print(td_connections_lst)
 
 
 def check_configs(config, halo_api_caller):
