@@ -18,6 +18,10 @@ class ConfigHelper(object):
         halo_api_auth_args (str): Halo API authentication arguments (grant_type)
         halo_api_auth_token (str): Halo API authentication token
         target_group_ID (str): Target Group ID
+        target_port_numbers (str): list of target port numbers
+        target_ip_addresses (str): list of target ip addresses
+        target_operation (str): target operations (LISTEN, IN, OUT) for (Listening Ports, Inbound Connections, Outbound Connections)
+        output_directory (str): directory for generated csv file.
     """
 
     def __init__(self):
@@ -29,7 +33,12 @@ class ConfigHelper(object):
         self.halo_api_auth_url = "oauth/access_token"
         self.halo_api_auth_args = {'grant_type': 'client_credentials'}
         self.halo_api_auth_token = None
+
         self.target_group_id = os.getenv("TARGET_GROUP_ID", "HARDSTOP")
+        self.target_port_numbers = os.getenv("TARGET_PORT_NUMBERS", "")
+        self.target_ip_addresses = os.getenv("TARGET_IP_ADDRESSES", "")
+        self.target_operation = os.getenv("TARGET_OPERATION", "LISTEN")
+        self.output_directory = os.getenv("OUTPUT_DIRECTORY", "")
 
     def sane(self):
 

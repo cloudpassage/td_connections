@@ -21,6 +21,10 @@ class HaloAPICaller(object):
         self.halo_api_key_secret = config.halo_api_key_secret
         self.halo_api_auth_token = config.halo_api_auth_token
         self.target_group_id = config.target_group_id
+        self.target_port_numbers = config.target_port_numbers
+        self.target_ip_addresses = config.target_ip_addresses
+        self.target_operation = config.target_operation
+        self.output_directory = config.output_directory
 
     # Dump debug info
     @classmethod
@@ -163,27 +167,27 @@ class HaloAPICaller(object):
                 self.expires = auth_resp_obj['expires_in']
         return self.halo_api_auth_token
 
-    def get_group_listening_ports(self, group_id):
-        url = "%s:%d/%s/groups/%s/connections?listen=true" % (
-            self.halo_api_hostname, self.halo_api_port, self.halo_api_version, group_id)
+    def get_group_listening_ports(self, group_id, port):
+        url = "%s:%d/%s/groups/%s/connections?listen=true&local_port=%s" % (
+            self.halo_api_hostname, self.halo_api_port, self.halo_api_version, group_id, port)
         (data, auth_error) = self.do_get_request(url, self.halo_api_auth_token)
         if data:
             return json.loads(data), auth_error
         else:
             return None, auth_error
 
-    def get_group_inbound_connections(self, group_id):
-        url = "%s:%d/%s/groups/%s/connections?direction=in" % (
-            self.halo_api_hostname, self.halo_api_port, self.halo_api_version, group_id)
+    def get_group_inbound_connections(self, group_id, ips):
+        url = "%s:%d/%s/groups/%s/connections?direction=in&local_address=%s" % (
+            self.halo_api_hostname, self.halo_api_port, self.halo_api_version, group_id, ips)
         (data, auth_error) = self.do_get_request(url, self.halo_api_auth_token)
         if data:
             return json.loads(data), auth_error
         else:
             return None, auth_error
 
-    def get_group_outbound_connections(self, group_id):
-        url = "%s:%d/%s/groups/%s/connections?direction=out" % (
-            self.halo_api_hostname, self.halo_api_port, self.halo_api_version, group_id)
+    def get_group_outbound_connections(self, group_id, ips):
+        url = "%s:%d/%s/groups/%s/connections?direction=out&local_address=%s" % (
+            self.halo_api_hostname, self.halo_api_port, self.halo_api_version, group_id, ips)
         (data, auth_error) = self.do_get_request(url, self.halo_api_auth_token)
         if data:
             return json.loads(data), auth_error

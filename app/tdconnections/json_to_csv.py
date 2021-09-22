@@ -5,7 +5,7 @@ from . import utility
 
 class JSONToCSV(object):
 
-    def convert_json_to_csv(self, json_object):
+    def convert_json_to_csv(self, output_directory, json_object):
         json_data = json_object[0]
         connections_data = json_data['connections']
 
@@ -13,7 +13,12 @@ class JSONToCSV(object):
         current_time = utility.Utility.date_to_iso8601(datetime.now())
         file_name = 'connections_data_file_'+current_time+'.csv'
         file_name = file_name.replace(':', '-')
-        data_file = open(file_name, 'w')
+        if output_directory == "" :
+            absolute_path = file_name
+        else:
+            absolute_path = output_directory+"/"+file_name
+
+        data_file = open(absolute_path, 'w')
 
         # create the csv writer object
         csv_writer = csv.writer(data_file)
