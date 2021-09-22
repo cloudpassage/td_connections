@@ -21,7 +21,7 @@ class HaloAPICaller(object):
         self.halo_api_key_secret = config.halo_api_key_secret
         self.halo_api_auth_token = config.halo_api_auth_token
         self.target_group_id = config.target_group_id
-        self.target_port_numbers = config.target_port_numbers
+        self.target_port_number = config.target_port_number
         self.target_ip_addresses = config.target_ip_addresses
         self.target_operation = config.target_operation
         self.output_directory = config.output_directory

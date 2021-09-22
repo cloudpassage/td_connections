@@ -30,7 +30,7 @@ def main():
         utility.Utility.log_stdout(
             "3- Retrieving list of group listening ports")
         td_connections_lst = halo_api_caller_obj.get_group_listening_ports(config.target_group_id,
-                                                                           config.target_port_numbers)
+                                                                           config.target_port_number)
     if required_operation == 'IN':
         utility.Utility.log_stdout(
             "3- Retrieving list of group inbound connections")

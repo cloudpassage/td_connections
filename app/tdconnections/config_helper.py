@@ -35,7 +35,7 @@ class ConfigHelper(object):
         self.halo_api_auth_token = None
 
         self.target_group_id = os.getenv("TARGET_GROUP_ID", "HARDSTOP")
-        self.target_port_numbers = os.getenv("TARGET_PORT_NUMBERS", "")
+        self.target_port_number = os.getenv("TARGET_PORT_NUMBER", "")
         self.target_ip_addresses = os.getenv("TARGET_IP_ADDRESSES", "")
         self.target_operation = os.getenv("TARGET_OPERATION", "LISTEN")
         self.output_directory = os.getenv("OUTPUT_DIRECTORY", "")
