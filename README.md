@@ -7,11 +7,13 @@ The main purpose of this tool is to retrieve the traffic discovery connections
 List of IPs) and export these results into CSV file.
 
 ## Requirements:
-- CloudPassage Halo API key (with admin privileges).
+- CloudPassage Halo API key (with auditor privileges).
 - Python 3.6 or later including packages specified in "requirements.txt".
 
 ## Installation:
 `git clone https://github.com/cloudpassage/td_connections.git`
+
+`cd td_connections/app`
 
 `pip install -r requirements.txt`
 
@@ -25,10 +27,9 @@ List of IPs) and export these results into CSV file.
 | HALO_API_VERSION | HALO EndPoint Version | v1 |
 
 ## How to run the tool (stand-alone):
-The following commands are for running the mapping script.
+To run the script follow the below steps.
 
-1.  Navigate to the app folder that contains module "runner.py", and run it
-
+1.  Navigate to the app folder that contains module "runner_with_inputs.py", and run it
 
 
     `cd td_connections/app`
@@ -45,21 +46,21 @@ The following commands are for running the mapping script.
 
 
 
-3. If the user choose listening ports operation, then script will give the user three options:
+3. If the user chooses listening ports operation, then script will give the user three options:
    1. Use specific port number to filter retrieved listening ports (i.e. 22)
    2. Retrieve all available listening ports
    3. Exit
 
 
 
-4. If the user choose inbound connections operation, then script will give the user three options:
+4. If the user chooses inbound connections operation, then script will give the user three options:
    1. Use list of IPs to filter retrieved inbound connections (i.e. 172.31.30.108, 172.31.15.11)
    2. Retrieve all available inbound connections
    3. Exit
 
 
 
-5. If the user choose outbound connections operation, then script will give the user three options:
+5. If the user chooses outbound connections operation, then script will give the user three options:
    1. Use list of IPs to filter retrieved outbound connections (i.e. 172.31.30.108, 172.31.15.11)
    2. Retrieve all available outbound connections
    3. Exit
@@ -77,4 +78,4 @@ The following commands are for running the mapping script.
 
 
 
-8. After setting the required input parameters above, The script will start connecting to HALO API and retrieve required TD connections.
+8. After setting the required input parameters above, The script will start connecting to HALO API and retrieving required TD connections.
