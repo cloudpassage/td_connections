@@ -11,11 +11,12 @@ List of IPs) and export these results into CSV file.
 - Python 3.6 or later including packages specified in "requirements.txt".
 
 ## Installation:
-`git clone https://github.com/cloudpassage/td_connections.git`
 
-`cd td_connections/app`
-
-`pip install -r requirements.txt`
+```
+   git clone https://github.com/cloudpassage/td_connections.git
+   cd td_connections/app
+   pip install -r requirements.txt
+```
 
 ## Configuration:
 | Variable | Description | Default Value |
@@ -31,12 +32,10 @@ To run the script follow the below steps.
 
 1.  Navigate to the app folder that contains module "runner_with_inputs.py", and run it
 
-
-    `cd td_connections/app`
-
-    `python runner_with_inputs.py`
-
-
+```
+    cd td_connections/app
+    python runner_with_inputs.py
+```
 
 2. Script will ask user to enter required operation number, there are three choices:
    1. Listening Ports
@@ -83,69 +82,49 @@ To run the script follow the below steps.
 ## How to run the tool (containerized):
 Clone the code and build the container:
 
-`git clone https://github.com/cloudpassage/td_connections.git`
-
-`cd td_connections`
-
-`docker build -t td_connections .`
+```
+   git clone https://github.com/cloudpassage/td_connections.git
+   cd td_connections
+   docker build -t td_connections .
+```
 
 To run the container interactively (foreground):
 
 1. Retrieve listening ports
 
-
+```
     docker run -it \
-
     -e HALO_API_KEY_ID=$HALO_API_KEY_ID \
-
     -e HALO_API_KEY_SECRET=$HALO_API_KEY_SECRET \
-
     -e TARGET_GROUP_ID=$TARGET_GROUP_ID \
-
     -e TARGET_OPERATION=$TARGET_OPERATION \
-
     -e TARGET_PORT_NUMBER=$TARGET_PORT_NUMBER \
-
     -e OUTPUT_DIRECTORY=$OUTPUT_DIRECTORY \
-
     td_connections
+```
 
+2. Retrieve Inbound Connections
 
-2. Retrieve Inbound Connections:
-
-
+```
     docker run -it \
-
     -e HALO_API_KEY_ID=$HALO_API_KEY_ID \
-
     -e HALO_API_KEY_SECRET=$HALO_API_KEY_SECRET \
-
     -e TARGET_GROUP_ID=$TARGET_GROUP_ID \
-
     -e TARGET_OPERATION=$TARGET_OPERATION \
-
     -e TARGET_IP_ADDRESSES=$TARGET_IP_ADDRESSES \
-
     -e OUTPUT_DIRECTORY=$OUTPUT_DIRECTORY \
-
     td_connections
+```
 
+3. Retrieve Outbound Connections
 
-2. Retrieve Outbound Connections:
-
-
+```
     docker run -it \
-
     -e HALO_API_KEY_ID=$HALO_API_KEY_ID \
-
     -e HALO_API_KEY_SECRET=$HALO_API_KEY_SECRET \
-
     -e TARGET_GROUP_ID=$TARGET_GROUP_ID \
-
     -e TARGET_OPERATION=$TARGET_OPERATION \
-
     -e TARGET_IP_ADDRESSES=$TARGET_IP_ADDRESSES \
-
     -e OUTPUT_DIRECTORY=$OUTPUT_DIRECTORY \
-
     td_connections
+```
