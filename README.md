@@ -79,3 +79,73 @@ To run the script follow the below steps.
 
 
 8. After setting the required input parameters above, The script will start connecting to HALO API and retrieving required TD connections.
+
+## How to run the tool (containerized):
+Clone the code and build the container:
+
+`git clone https://github.com/cloudpassage/td_connections.git`
+
+`cd td_connections`
+
+`docker build -t td_connections .`
+
+To run the container interactively (foreground):
+
+1. Retrieve listening ports
+
+
+    docker run -it \
+
+    -e HALO_API_KEY_ID=$HALO_API_KEY_ID \
+
+    -e HALO_API_KEY_SECRET=$HALO_API_KEY_SECRET \
+
+    -e TARGET_GROUP_ID=$TARGET_GROUP_ID \
+
+    -e TARGET_OPERATION=$TARGET_OPERATION \
+
+    -e TARGET_PORT_NUMBER=$TARGET_PORT_NUMBER \
+
+    -e OUTPUT_DIRECTORY=$OUTPUT_DIRECTORY \
+
+    td_connections
+
+
+2. Retrieve Inbound Connections:
+
+
+    docker run -it \
+
+    -e HALO_API_KEY_ID=$HALO_API_KEY_ID \
+
+    -e HALO_API_KEY_SECRET=$HALO_API_KEY_SECRET \
+
+    -e TARGET_GROUP_ID=$TARGET_GROUP_ID \
+
+    -e TARGET_OPERATION=$TARGET_OPERATION \
+
+    -e TARGET_IP_ADDRESSES=$TARGET_IP_ADDRESSES \
+
+    -e OUTPUT_DIRECTORY=$OUTPUT_DIRECTORY \
+
+    td_connections
+
+
+2. Retrieve Outbound Connections:
+
+
+    docker run -it \
+
+    -e HALO_API_KEY_ID=$HALO_API_KEY_ID \
+
+    -e HALO_API_KEY_SECRET=$HALO_API_KEY_SECRET \
+
+    -e TARGET_GROUP_ID=$TARGET_GROUP_ID \
+
+    -e TARGET_OPERATION=$TARGET_OPERATION \
+
+    -e TARGET_IP_ADDRESSES=$TARGET_IP_ADDRESSES \
+
+    -e OUTPUT_DIRECTORY=$OUTPUT_DIRECTORY \
+
+    td_connections
